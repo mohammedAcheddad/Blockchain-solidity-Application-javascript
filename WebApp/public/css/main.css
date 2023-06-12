@@ -1,0 +1,16 @@
+.textProject{
+    text-align: justify;
+}
+.projectTitle{
+    padding: 20px;
+}
+.contentM{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.contentM>*{
+    width: 80%;
+    margin: 10px;
+}

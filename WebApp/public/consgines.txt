@@ -1,0 +1,7 @@
+- a user can create as many projects as he wishes
+- a project is identified by an id and characterized by a title and a description.
+- a user can donate only once to a particular project by sending ETH.
+- we save at the level of the smart contract the list of 'Donors' as well as the amounts they have sent.
+- when a donation is made the FULL amount send by a donor is directly sent to the projet owner address.
+
+each project has an ID(auto-increment) ,titre ,description 
