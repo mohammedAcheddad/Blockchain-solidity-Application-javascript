@@ -14,6 +14,8 @@ contract ProjectCreation {
         string description;
         address payable projectOwner;
         mapping(address => Donor) donors;
+        address [] DonorAdresses;
+        uint [] DonorAmount;
         uint totalDonations;
     }
 
@@ -42,6 +44,9 @@ contract ProjectCreation {
 
         // Save the donor's information
         projects[_projectId].donors[msg.sender] = Donor(msg.sender, msg.value);
+        projects[_projectId].DonorAdresses.push(msg.sender);
+        projects[_projectId].DonorAmount.push(msg.value);
+        
         
         // Update total donations
         projects[_projectId].totalDonations += msg.value;
@@ -56,4 +61,20 @@ contract ProjectCreation {
         require(_projectId < projectCount, "Invalid project id");
         return projects[_projectId].totalDonations;
     }
+
+    function getDonorByIndex(uint _projectId, uint _index) public view returns (address, uint) {
+    require(_projectId < projectCount, "Invalid project id");
+    require(_index < projects[_projectId].DonorAdresses.length, "Invalid index");
+
+    address donorAddress = projects[_projectId].DonorAdresses[_index];
+    return (donorAddress, projects[_projectId].donors[donorAddress].amountDonated);
+}
+
+function getDonorCount(uint _projectId) public view returns (uint) {
+    require(_projectId < projectCount, "Invalid project id");
+    return projects[_projectId].DonorAdresses.length;
+}
+
+
+
 }
